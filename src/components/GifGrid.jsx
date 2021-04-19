@@ -1,43 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { useFetchGifs } from '../hooks/useFetchGifs'
 import GifGridItem from './GifGridItem'
 
 const GifGrid = ({ category }) => {
 
-    const [images, setImages] = useState([])
-
-    useEffect(() => {
-        getGifs()
-    }, [])
-
-    console.log(category)
-
-    const getGifs = async () => {
-        const url = `http://api.giphy.com/v1/gifs/search?q=${category}&limit=20&api_key=pH6Xy9jt2HfuPKrOpDs5NR0mODR8M69d`
-        const resp = await fetch(url)
-        const { data } = await resp.json()
-
-        const gifs = data.map(img => {
-            return {
-                id: img.id,
-                title: img.title,
-                url: img.images.downsized_medium.url
-            }
-        })
-
-        console.log(gifs)
-        setImages(gifs)
-    }
+    const { data: images, loading } = useFetchGifs(category) // despues de data se coloca : para renombrar
 
     return (
         <>
-            <h3 className="w-100 text-center"><span class="badge badge-dark">{category}</span></h3>
+            {loading && <div className="spinner-border text-info" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>}
+
             {
-                images.map(img => ( //desestructuracion 
-                    <GifGridItem
-                        key={img.id}
-                        {...img}
-                    />
-                ))
+                images.map((img, index) => { //desestructuracion 
+                    return <a href={img.url_origin} target='origin'><GifGridItem key={index} {...img} /></a>  //Igual que img = {img} envia cada una de las propiedades de la imagen
+                })
             }
         </>
     )

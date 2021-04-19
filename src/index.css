@@ -32,3 +32,9 @@ code {
 .border-radius {
   border-radius:0 10px 10px 0;
 }
+
+.animacion-escala:hover {
+  transition: .2s all ease;
+  transform: scale(1.15);
+  z-index: 20 !important;
+}

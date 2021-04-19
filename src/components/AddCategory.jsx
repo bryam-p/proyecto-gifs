@@ -21,12 +21,18 @@ const AddCategory = ({ setCategories }) => {
     return (
         <form className="row" onSubmit={handleSubmit}>
             <div className="col-8 d-flex w-100 espaciado">
-                <input type="text" className="form-control" placeholder="Escribe tu busqueda" value={inputValue} onChange={handleInputChange} />
+                <input type="text" list="test" className="form-control" placeholder="Escribe tu busqueda" value={inputValue} onChange={handleInputChange} />
+                <datalist id="test">
+                    <option value="Gatos" />
+                    <option value="Perros" />
+                    <option value="Peliculas" />
+                    <option value="Juegos" />
+                    <option value="Memes" />
+                </datalist>
             </div>
             <div className="col-4 espaciado">
                 <button className="btn-block btn-dark h-100 border-radius">Buscar gif</button>
             </div>
-            <h3>{inputValue}</h3>
         </form>
     )
 }

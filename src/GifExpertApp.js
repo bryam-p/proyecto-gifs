@@ -7,11 +7,6 @@ function GifExpertApp() {
 
     const [categories, setCategories] = useState(['Gatos'])
 
-    // const handleAdd = () => {
-    //     setCategories( [...categories , "Dragon" ])
-    // }
-
-
     return (
         <div className="container mt-5">
             {/* <button className="btn btn-dark" onClick={handleAdd} >Agregar</button> */}
@@ -19,10 +14,12 @@ function GifExpertApp() {
             <br></br>
             <div className="row">
                 <div className="col-12">
-                <AddCategory setCategories={setCategories} />
+                    <AddCategory setCategories={setCategories} />
                 </div>
             </div>
             <hr />
+
+            <h3 className="w-100 text-center"><span className="badge badge-dark">{categories}</span></h3>
 
             <div className="card-columns" >
                 {
