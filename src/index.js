@@ -5,10 +5,8 @@ import './index.css'
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.StrictMode >
     <GifExpertApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-
